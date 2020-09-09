@@ -1,0 +1,33 @@
+body
+{
+background-color:#00FFFF;
+}
+h1
+{
+width:700px;
+color:#000000;
+font-style:normal;
+font-size:35px;
+font-family:"Times New Roman",Times,serif;
+}
+
+
+input[type="submit"]
+{
+width:650px;
+display:block;
+border-size:5px;
+margin-left:10px;
+margin-right:10px;
+margin-top:10px;
+margin-bottom:10px;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+padding-bottom:10px;
+font-style:normal;
+font-size:25px;
+font-family:"Times New Roman",Times,serif;
+background-color:#7CFC00;
+}
+
