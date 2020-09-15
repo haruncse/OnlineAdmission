@@ -2,9 +2,9 @@
 session_start();
 $message="";
 if(count($_POST)>0) {
-$conn = mysql_connect("localhost","root","");
-mysql_select_db("admissionproject",$conn);
-$result = mysql_query("SELECT * FROM validate_user WHERE user_name='" . $_POST["user_name"] . "' and user_password = '". $_POST["user_password"]."'");
+$conn = mysqli_connect("localhost","root","","admissionproject");
+//mysql_select_db("admissionproject",$conn);
+$result = mysql_query($conn,"SELECT * FROM validate_user WHERE user_name='" . $_POST["user_name"] . "' and user_password = '". $_POST["user_password"]."'");
 $row  = mysql_fetch_array($result);
 if(is_array($row)) {
 $_SESSION["serial_no"] = $row[serial_no];

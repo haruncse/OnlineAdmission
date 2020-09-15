@@ -2,10 +2,19 @@
 session_start();
 $message="";
 if(count($_POST)>0) {
-$conn = mysql_connect("localhost","root","");
-mysql_select_db("admissionproject",$conn);
-$result = mysql_query("SELECT * FROM validate_user WHERE user_name='" . $_POST["user_name"] . "' and user_password = '". $_POST["user_password"]."'");
-$row  = mysql_fetch_array($result);
+$conn = mysqli_connect("localhost","root","","admissionproject");
+
+if(! $conn )  
+{  
+  die('Could not connect: ' . mysqli_error());  
+}  
+echo 'Connected successfully';  
+
+//mysqli_close($conn);  
+
+//mysqli_select_db("admissionproject",$conn);
+$result = mysqli_query($conn,"SELECT * FROM validate_user WHERE user_name='" . $_POST["user_name"] . "' and user_password = '". $_POST["user_password"]."'");
+$row  = mysqli_fetch_array($result);
 if(is_array($row)) {
 $_SESSION["user_password"] = $row[user_password];
 $_SESSION["user_name"] = $row[user_name]; 
@@ -20,55 +29,56 @@ header("Location:user_dashboard.php");
 ?>
 <html>
 <head> 
+
 <style>
-.cities {
-    
-    padding: 35px;
-    background: url(Prottoy71.jpg);
-    background-repeat: no-repeat;
-   
-    color:#1F6837;
-    margin:20px;
-    padding:30px;
-}
+    .cities {
+        
+        padding: 35px;
+        background: url(Prottoy71.jpg);
+        background-repeat: no-repeat;
+       
+        color:#1F6837;
+        margin:20px;
+        padding:30px;
+    }
 
-p1{
-  opacity:1.0;
-  font-weight:100%;
-  color: red;
+    p1{
+      opacity:1.0;
+      font-weight:100%;
+      color: red;
 
-}
+    }
 
-.mytext {
-    value:'User name';
-    margin: 10%;
-    background-color:#eeeeee;
-    border-radius: 25px;
-    height:35px;
-    width:250px;
-    padding:0px;
+    .mytext {
+        value:'User name';
+        margin: 10%;
+        background-color:#eeeeee;
+        border-radius: 25px;
+        height:35px;
+        width:250px;
+        padding:0px;
 
-       }
-.mytext1 {
-    margin: 0%;
-    background-color:#eeeeee;
-    border-radius: 25px;
-    height:35px;
-    width:250px;
-    padding:0px;
+           }
+    .mytext1 {
+        margin: 0%;
+        background-color:#eeeeee;
+        border-radius: 25px;
+        height:35px;
+        width:250px;
+        padding:0px;
 
-       }
-a:link {
-    
-    color:#000000;
-    text-decoration: none;
-}
-    
-.vill{
-    background-color:#F5F5F0;
-    color:#2E2E1F;
-    margin:2px;
-    padding:5px;    
+           }
+    a:link {
+        
+        color:#000000;
+        text-decoration: none;
+    }
+        
+    .vill{
+        background-color:#F5F5F0;
+        color:#2E2E1F;
+        margin:2px;
+        padding:5px;    
 }
 
 </style>

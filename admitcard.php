@@ -20,7 +20,7 @@ $tbl_name="ssc_info";
 $tbl_name2="hsc_info"; 
 */
 
-mysql_connect("$host","$username","$password")or die("can not connect");
+mysqli_connect("$host","$username","$password")or die("can not connect");
 mysql_select_db("$db_name")or die("can not connect DB");
 
  //$sql="SELECT * FROM $aplicant_education_info WHERE user_name='$user_name'";
