@@ -4,15 +4,15 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');
 
-$link = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
+$link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD,DB_NAME);
 if (!$link) {
 die('Could not connect: ' . mysql_error());
 }
 
-$db_selected = mysql_select_db(DB_NAME, $link);
+//$db_selected = mysql_select_db(DB_NAME, $link);
 
 if (!$db_selected) {
-die('Can\'t use ' . DB_NAME . ':' . mysql_error());
+die('Can\'t use ' . DB_NAME . ':' . mysqli_error());
 }
 $value1 = $_POST['Post_Code'];
 $value2 = $_POST['Village_Name'];
@@ -22,14 +22,14 @@ $value4 = $_POST['Home_No'];
 
 $sql = "INSERT INTO applicant_home_info (Post_Code,Village_Name,Road_No,Home_No) VALUES ('$value1','$value2','$value3','$value4')";
 
-if (!mysql_query($sql)) {
-die('Error: ' . mysql_error());
+if (!mysqli_query($sql)) {
+die('Error: ' . mysqli_error());
 }
 
 
 
 
-mysql_close();
+mysqli_close();
 ?>
 <html>
 <!-------------------------------------------HTML CODE BEGIN------------------------------->
@@ -664,8 +664,8 @@ mysql_close();
     <option value="Dhunat">Dhunat</option>
     <option value="Dhamoirhat">Dhamoirhat</option>
     <option value="Dhamrai">Dhamrai</option>
-    <option value="Dharmapasha>Dharmapasha</option>
-<option value="Dhobaura">Dhobaura</option>
+    <option value="Dharmapasha">Dharmapasha</option>
+    <option value="Dhobaura">Dhobaura</option>
     <option value="Dhunat">Dhunat</option>
     <option value="Dighalia">Dighalia</option>
     <option value="Dighinal">Dighinal</option>
@@ -782,8 +782,8 @@ mysql_close();
     <option value="LakshmipurSadar">LakshmipurSadar</option>
     <option value="Dhamoirhat">Dhamoirhat</option>
     <option value="Dhamrai">Dhamrai</option>
-    <option value="Dharmapasha>Dharmapasha</option>
-<option value="Dhobaura">Dhobaura</option>
+    <option value="Dharmapasha">Dharmapasha</option>
+    <option value="Dhobaura">Dhobaura</option>
     <option value="Dhunat">Dhunat</option>
     <option value="Dighalia">Dighalia</option>
     <option value="Dighinal">Dighinal</option>

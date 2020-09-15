@@ -20,8 +20,8 @@ $aplicant_present_home_info="aplicant_present_home_info";
   $tbl_name2="hsc_info"; 
 */
 
-mysqli_connect("$host","$username","$password")or die("can not connect");
-mysql_select_db("$db_name")or die("can not connect DB");
+$conn=mysqli_connect("$host","$username","$password",$db_name)or die("can not connect");
+//mysql_select_db("$db_name")or die("can not connect DB");
 
  //$sql="SELECT * FROM $aplicant_education_info WHERE user_name='$user_name'";
 
@@ -35,13 +35,13 @@ $sql1="SELECT * FROM $tbl_name2 WHERE roll_num='$hsc_roll' and board='$hsc_board
 
    */
 
-$result=mysql_query($sql1);
-$result1=mysql_query($sql2); 
-$count=mysql_num_rows($result);
-$count1=mysql_num_rows($result1); 
+$result=mysqli_query($conn,$sql1);
+$result1=mysqli_query($conn,$sql2); 
+$count=mysqli_num_rows($conn,$result);
+$count1=mysqli_num_rows($conn,$result1); 
 
 
-$result2=mysql_query($sql3);
+$result2=mysqli_query($conn,$sql3);
 
 
 
@@ -60,7 +60,7 @@ if($count==1 && $count1==1 )
  
  
  
- while($row_ssc =mysql_fetch_array($result))
+ while($row_ssc =mysqli_fetch_array($result))
  {
      
     
@@ -81,7 +81,7 @@ if($count==1 && $count1==1 )
                       
  <?php
 
-  while($row_hsc =mysql_fetch_array($result1))
+  while($row_hsc =mysqli_fetch_array($result1))
  {
      
 
@@ -95,7 +95,7 @@ if($count==1 && $count1==1 )
 
  }
 
-   while($row_user =mysql_fetch_array($result2))
+   while($row_user =mysqli_fetch_array($result2))
  {
      
     
@@ -142,11 +142,11 @@ $aplicant_picture_signature="aplicant_picture_signature";
 
   //$user_name='harun';
 
-$con=mysql_connect("$host","$username","$password")or die("can not connect");
-mysql_select_db("$db_name")or die("can not connect DB");
+$con=mysqli_connect("$host","$username","$password",$db_name)or die("can not connect");
+//mysql_select_db("$db_name")or die("can not connect DB");
 $qry="select aplicant_image from $aplicant_picture_signature where aplicant_image_name='$user_name'";
 //$res=mysql_query($qry);  
-$res=mysql_query($qry,$con);
+$res=mysqli_query($con,$qry);
 while($row=mysql_fetch_array($res))
 {
 
@@ -315,12 +315,12 @@ $aplicant_picture_signature="aplicant_picture_signature";
 
 
 
-$con=mysql_connect("$host","$username","$password")or die("can not connect");
-mysql_select_db("$db_name")or die("can not connect DB");
+$con=mysqli_connect("$host","$username","$password",$db_name)or die("can not connect");
+//mysql_select_db("$db_name")or die("can not connect DB");
 $qry="select aplicant_signature from $aplicant_picture_signature where aplicant_image_name='$user_name'";
 //$res=mysql_query($qry);  
-$res=mysql_query($qry,$con);
-while($row=mysql_fetch_array($res))
+$res=mysqli_query($qry,$con);
+while($row=mysqli_fetch_array($res))
 {
    
     //echo '<img height="300" width="300" src="data:aplicant_signature;base64,'.$row['aplicant_signature'].'"';
