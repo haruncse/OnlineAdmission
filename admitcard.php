@@ -16,8 +16,8 @@ $aplicant_picture_signature="aplicant_picture_signatur";
 $aplicant_present_home_info="aplicant_present_home_info";
 
 /*
-$tbl_name="ssc_info";
-$tbl_name2="hsc_info"; 
+  $tbl_name="ssc_info";
+  $tbl_name2="hsc_info"; 
 */
 
 mysqli_connect("$host","$username","$password")or die("can not connect");
@@ -84,17 +84,12 @@ if($count==1 && $count1==1 )
   while($row_hsc =mysql_fetch_array($result1))
  {
      
-    
-           
 
-           
-               
-         
-             $aplicant_name=$row_hsc['aplicant_name'];
-            $aplicant_father_name=$row_hsc['aplicant_father_name'];
-            $aplicant_mother_name=$row_hsc['aplicant_mother_name'];
-             $aplicant_birth_date=$row_hsc['aplicant_birth_date'];
-              $aplicant_gender=$row_hsc['aplicant_gender'];
+  $aplicant_name=$row_hsc['aplicant_name'];
+  $aplicant_father_name=$row_hsc['aplicant_father_name'];
+  $aplicant_mother_name=$row_hsc['aplicant_mother_name'];
+  $aplicant_birth_date=$row_hsc['aplicant_birth_date'];
+  $aplicant_gender=$row_hsc['aplicant_gender'];
 
            
 

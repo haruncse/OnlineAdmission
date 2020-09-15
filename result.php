@@ -13,12 +13,12 @@ $db_name="admissionproject";
 $tbl_name="aplicant_roll_result_info";
 //$tbl_name2="hsc_info"; 
   $position="";
-mysql_connect("$host","$username","$password")or die("can not connect");
-mysql_select_db("$db_name")or die("can not connect DB");
+$conn=mysqli_connect("$host","$username","$password","$db_name")or die("can not connect");
+//mysql_select_db("$db_name")or die("can not connect DB");
 $sql="SELECT * FROM $tbl_name WHERE aplicant_roll='$roll_number'";
-$result=mysql_query($sql); 
+$result=mysqli_query($conn,$sql); 
 //$count=mysql_num_rows($result);
-$row  = mysql_fetch_array($result);
+$row  = mysqli_fetch_array($result);
 
 if(is_array($row)) {
 $_SESSION["roll_no"]=$row['aplicant_roll'];

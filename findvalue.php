@@ -1,19 +1,19 @@
-  <html>
+<html>
 <body>
 <style>
-.cities {
-    background: url(index.jpg);
-    background-repeat: no-repeat;
-    color:#2E2E1F;
-    margin:20px;
-    padding:44px;
-}
-.vill{
-    background-color:#F5F5F0;
-    color:#2E2E1F;
-    margin:20px;
-    padding:30px;    
-}
+    .cities {
+        background: url(index.jpg);
+        background-repeat: no-repeat;
+        color:#2E2E1F;
+        margin:20px;
+        padding:44px;
+    }
+    .vill{
+        background-color:#F5F5F0;
+        color:#2E2E1F;
+        margin:20px;
+        padding:30px;    
+    }
 </style>
 
 <div class="cities">
@@ -48,16 +48,16 @@ $db_name="education_info";
 $tbl_name="ssc_info";
 $tbl_name2="hsc_info"; 
 
-mysql_connect("$host","$username","$password")or die("can not connect");
-mysql_select_db("$db_name")or die("can not connect DB");
+$conn=mysqli_connect("$host","$username","$password","$db_name")or die("can not connect");
+//mysql_select_db("$db_name")or die("can not connect DB");
 
 $sql="SELECT * FROM $tbl_name WHERE roll_num='$ssc_roll' and board='$ssc_board' and passing_year='$ssc_year'";
 $sql1="SELECT * FROM $tbl_name2 WHERE roll_num='$hsc_roll' and board='$hsc_board' and passing_year='$hsc_year'";
 
-$result=mysql_query($sql);
-$result1=mysql_query($sql1); 
-$count=mysql_num_rows($result);
-$count1=mysql_num_rows($result1); 
+$result=mysqli_query($conn,$sql);
+$result1=mysqli_query($conn,$sql1); 
+$count=mysqli_num_rows($result);
+$count1=mysqli_num_rows($result1); 
 
 //////////////////
 /*
@@ -78,50 +78,51 @@ if($count==1 && $count1==1 )
 {
     $message=""; 
   
-  /*  
- if(is_array($result1)) {
-$_SESSION["roll_num"] = $result[roll_num];
-$_SESSION["board"] = $result[board]; 
-$_SESSION["year"] = $result[passing_year];
-} else {
-$message = "Invalid Roll number ,Board or Passing year";
-}    
-
+/*  
+    if(is_array($result1)) {
+    $_SESSION["roll_num"] = $result[roll_num];
+    $_SESSION["board"] = $result[board]; 
+    $_SESSION["year"] = $result[passing_year];
+    } else {
+    $message = "Invalid Roll number ,Board or Passing year";
+    }    
 */
     
   
  echo "<table border='3' align='left' cellpadding='10'> ";
         echo"<caption><h2><b>SSC Information</b></h2></caption>"; 
-        /* echo "<tr>"; 
-        // echo "<th align='middle'>SSC Informatiom</th>";
-         echo "<td align='middle'>"."SSC INFORMATION"."</td>";       
-         echo "</tr>";
-         */ 
- /*
- <tr>
- <th>Name</th>
- <th>Father's Name</th>
- <th>Roll No</th>
- <th>School</th>
- <th>Board</th>
- <th>GPA</th>
- </tr>";
- */
+/* 
+    echo "<tr>"; 
+    // echo "<th align='middle'>SSC Informatiom</th>";
+    echo "<td align='middle'>"."SSC INFORMATION"."</td>";       
+    echo "</tr>";
+    */ 
+    /*
+    <tr>
+    <th>Name</th>
+    <th>Father's Name</th>
+    <th>Roll No</th>
+    <th>School</th>
+    <th>Board</th>
+    <th>GPA</th>
+    </tr>";
+*/
  
  
  while($row_ssc =mysql_fetch_array($result))
  {
      
     
-      /*
- echo "<tr>";
- echo "<td>" .$row['name'] ."</td>";
- echo "<td>" .$row['father'] ."</td>";
- echo "<td>" .$row['roll'] ."</td>";
- echo "<td>" .$row['school'] ."</td>";
- echo "<td>" .$row['Board'] ."</td>";
- echo "<td>" .$row['gpa'] ."</td>";
- echo"</tr>";    */
+/*
+    echo "<tr>";
+    echo "<td>" .$row['name'] ."</td>";
+    echo "<td>" .$row['father'] ."</td>";
+    echo "<td>" .$row['roll'] ."</td>";
+    echo "<td>" .$row['school'] ."</td>";
+    echo "<td>" .$row['Board'] ."</td>";
+    echo "<td>" .$row['gpa'] ."</td>";
+    echo"</tr>";    
+*/
            
          echo "<tr>";           
          echo"<td>".'Roll Number'."</td>" ."<td>".$row_ssc['roll_num']."</td>";
